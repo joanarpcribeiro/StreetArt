@@ -31,4 +31,25 @@ router.post('/visits', isLoggedIn, (req,res,next) => {
   })
 })
 
+router.delete('/visits/:visitId', isLoggedIn,(req,res,next) =>{
+  Visit.findById(req.params.visitId)
+    .then(visit=>{ 
+      if(visit._user.equals(req.user._id)){
+        Visit.findByIdAndRemove(req.params.visitId)
+          .then(() => {
+            res.json({ message: `Project with ${req.params.visitId} is removed successfully.` });
+          })
+          .catch( err => {
+            res.json(err);
+          })
+      }
+      else{
+        res.json({message: "You're Not authorized"})
+      }
+    })
+    .catch( err => {
+      res.json(err);
+    })
+})
+
 module.exports = router;
