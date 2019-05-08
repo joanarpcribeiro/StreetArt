@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const StreetArt= require('../models/StreetArt')
+const upload = require('../configs/cloudinary')
 //import axios from 'axios';
 
 router.get('/', (req, res, next) => {
@@ -18,6 +19,23 @@ router.get('/:streetArtId', (req, res, next) => {
       res.json(art)
     })
     .catch(err => next(err))
+});
+
+router.post('/', upload.single('picture'), (req, res, next) => {
+  let { lat, lng } = req.body
+  let pictureUrl = req.file.url
+  
+  StreetArt.create({
+    location: {coordinates:[lat, lng]},
+    pictureUrl: pictureUrl
+  })
+  .then(response => {
+    res.json(response);
+  })
+  .catch(err => {
+    res.json(err);
+  })
+
 });
 
 module.exports = router;
