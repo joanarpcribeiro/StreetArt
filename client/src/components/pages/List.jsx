@@ -25,7 +25,7 @@ export default class List extends Component {
   render(){
     //console.log(this.state.fullList) 
     return(
-      <Table>      
+      <Table hover>      
         <thead>
             <tr>
               <th>Picture</th>
@@ -44,11 +44,6 @@ export default class List extends Component {
                   {streetArt.location.coordinates[0]}, {streetArt.location.coordinates[1]}
                   </a>
                 </td>
-                  {/* <a href={`http://www.google.com/maps/dir//${streetArt.location.coordinates[1]},${streetArt.location.coordinates[0]}/@${streetArt.location.coordinates[1]},${streetArt.location.coordinates[0]}`} target="_blank">
-                      <td key={streetArt.location.coordinates}>
-                        {streetArt.location.coordinates[0]}, {streetArt.location.coordinates[1]}
-                      </td>
-                  </a> */}
                 <td><Button color="danger" outline tag={Link} to={"/street-art-detail/"+streetArt._id}>Detail</Button></td>
               </tr>
           )})
