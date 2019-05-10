@@ -8,35 +8,45 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
 import Navbar from '../MainNavbar';
+import List from './pages/List';
+import StreetArtDetail from './pages/StreetArtDetail';
 
 export default class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      countries: []
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     countries: []
+  //   }
+  // }
 
-  handleLogoutClick(e) {
-    api.logout()
-  }
+  // handleLogoutClick(e) {
+  //   api.logout()
+  // }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <Navbar />
-        </header>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/countries" component={Countries} />
-          <Route path="/add-country" component={AddCountry} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/secret" component={Secret} />
-          <Route render={() => <h2>404</h2>} />
-        </Switch>
-      </div>
+       <header className="App-header">
+         <Navbar/>
+         {/* <NavLink to="/" exact>Home</NavLink> */}
+         {/* <NavLink to="/list">List of Street Arts</NavLink> */}
+         {/* <NavLink to="/map">Add country</NavLink>
+         <NavLink to="/secret">New Street Art</NavLink> */}
+         {/* {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
+         {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
+         {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>} */}
+       </header>
+       <Switch>
+         <Route path="/" exact component={Home} />
+         <Route path="/list" component={List} />
+         <Route path="/map" component={AddCountry} />
+         <Route path="/new-street-art" component={Secret} />
+         <Route path="/street-art-detail" component={StreetArtDetail} />
+         <Route path="/signup" component={Signup} />
+         <Route path="/login" component={Login} />
+         <Route render={() => <h2>404</h2>} />
+       </Switch>
+     </div>
     );
   }
 }

@@ -52,6 +52,7 @@ app.use('/api', require('./routes/index'))
 app.use('/api', require('./routes/auth'))
 app.use('/api/street-arts', require('./routes/street-arts')) // NEW LINE: take all the routes defined in './routes/street-arts' and prefix them by '/api/street-arts'
 app.use('/api', require('./routes/visits'))
+app.use('/api', require('./routes/street-art-detail'))
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use('/api/*', (req, res, next) => {
