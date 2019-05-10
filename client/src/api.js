@@ -70,6 +70,13 @@ export default {
   //     .catch(errHandler)
   // },
 
+  // addCountry(body) {
+  //   return service
+  //     .post('/countries', body)
+  //     .then(res => res.data)
+  //     .catch(errHandler)
+  // },
+
   getStreetArts() {
     return service
       .get('/street-arts')
@@ -77,30 +84,30 @@ export default {
       .catch(errHandler)
   },
 
-  addCountry(body) {
+  getStreetArt(streetArtId){
     return service
-      .post('/countries', body)
+      .get(`/street-arts/${streetArtId}`)
       .then(res => res.data)
       .catch(errHandler)
   },
 
-  getSecret() {
-    return service
-      .get('/secret')
-      .then(res => res.data)
-      .catch(errHandler)
-  },
+  // getSecret() {
+  //   return service
+  //     .get('/secret')
+  //     .then(res => res.data)
+  //     .catch(errHandler)
+  // },
 
-  addPicture(file) {
-    const formData = new FormData()
-    formData.append("picture", file)
-    return service
-      .post('/endpoint/to/add/a/picture', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-      .then(res => res.data)
-      .catch(errHandler)
-  },
+  // addPicture(file) {
+  //   const formData = new FormData()
+  //   formData.append("picture", file)
+  //   return service
+  //     .post('/endpoint/to/add/a/picture', formData, {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data',
+  //       },
+  //     })
+  //     .then(res => res.data)
+  //     .catch(errHandler)
+  // },
 }

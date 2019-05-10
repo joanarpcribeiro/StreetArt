@@ -21,6 +21,7 @@ router.get('/:streetArtId', (req, res, next) => {
     .catch(err => next(err))
 });
 
+// upload.single('picture') is taking the field "picture" sent by the user, save it to cloudinary, save the info in req.file and go to the next middleware
 router.post('/', upload.single('picture'), (req, res, next) => {
   let { lat, lng } = req.body
   let pictureUrl = req.file.url

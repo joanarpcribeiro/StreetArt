@@ -41,7 +41,7 @@ export default class App extends Component {
          <Route path="/list" component={List} />
          <Route path="/map" component={AddCountry} />
          <Route path="/new-street-art" component={Secret} />
-         <Route path="/street-art-detail" component={StreetArtDetail} />
+         <Route path="/street-art-detail/:streetArtId" component={StreetArtDetail} />
          <Route path="/signup" component={Signup} />
          <Route path="/login" component={Login} />
          <Route render={() => <h2>404</h2>} />
