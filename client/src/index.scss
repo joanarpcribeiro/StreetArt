@@ -8,6 +8,7 @@ $primary: red;
 // 1) Run in the client folder: $ npm i bootstrap
 // 2) Import bootstrap with the following line
  @import '../node_modules/bootstrap/scss/bootstrap.scss';
+ @import '../node_modules/mapbox-gl/src/css/mapbox-gl.css';
 // 
 // To install Reactstrap:
 // 1) Run in the client folder: $ npm i reactstrap
