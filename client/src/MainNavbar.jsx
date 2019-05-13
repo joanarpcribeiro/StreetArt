@@ -11,6 +11,8 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+  import { Link } from 'react-router-dom';
+  import api from './api';
 
 export default class NavBar extends React.Component {
   constructor(props) {
@@ -34,21 +36,13 @@ export default class NavBar extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink style={{color:"white"}} href="/list">List</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink style={{color:"white"}} href="/map">Map</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink style={{color:"white"}} href="/new-street-art">New Street Art</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink style={{color:"white"}} href="/signup">Sign Up</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink style={{color:"white"}} href="/login">Login</NavLink>
-              </NavItem>
+              <NavLink style={{color:"white"}} href="/list">List</NavLink>
+              <NavLink style={{color:"white"}} href="/map">Map</NavLink>
+              <NavLink style={{color:"white"}} href="/new-street-art">New Street Art</NavLink>
+              {!api.isLoggedIn() && <NavLink style={{color:"white"}} href="/signup">Sign Up</NavLink>}
+              {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
+              {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
+            <NavLink to="/secret">Secret</NavLink>
             </Nav>
           </Collapse>
         </Navbar>
